@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delhi Technological University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#fbfbfd;--text:#1d1d1f;--muted:#86868b;--accent:#0071e3;--card:#fff;--border:rgba(0,0,0,.06)}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+        a{color:inherit;text-decoration:none}
+
+        header{position:sticky;top:0;z-index:100;background:rgba(251,251,253,.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--border)}
+        .header-inner{max-width:1080px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px}
+        .logo{display:flex;align-items:center;gap:12px}
+        .logo img{height:32px;width:auto}
+        .logo span{font-size:1.05rem;font-weight:600;letter-spacing:-.01em}
+        nav{display:flex;gap:2rem}
+        nav a{font-size:.85rem;color:var(--muted);transition:color .3s}
+        nav a:hover{color:var(--text)}
+
+        .hero{position:relative;text-align:center;padding:10rem 2rem 6rem;background:url('https://cteldtu.com/images/maincampus.jpg') center/cover no-repeat;min-height:520px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+        .hero::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,.52)}
+        .hero>*{position:relative;z-index:1}
+        .hero h1{font-size:3.5rem;font-weight:700;letter-spacing:-.035em;line-height:1.1;margin-bottom:1.5rem;color:#fff}
+        .hero p{font-size:1.25rem;color:rgba(255,255,255,.8);max-width:580px;margin:0 auto 2.5rem;line-height:1.5}
+        .hero-link{font-size:1.1rem;color:#fff;border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:2px;display:inline-flex;align-items:center;gap:6px;transition:gap .3s,border-color .3s}
+        .hero-link:hover{gap:10px;border-color:#fff}
+
+        section{max-width:1080px;margin:0 auto;padding:5rem 2rem}
+        .section-label{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:600;margin-bottom:.75rem}
+        .section-title{font-size:2.8rem;font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-bottom:1.25rem}
+        .section-desc{font-size:1.15rem;color:var(--muted);max-width:620px;line-height:1.6}
+
+        .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin:3.5rem 0}
+        .stat{text-align:center;padding:2.5rem 1rem;background:var(--card)}
+        .stat-num{font-size:2.8rem;font-weight:700;letter-spacing:-.03em}
+        .stat-label{font-size:.8rem;color:var(--muted);margin-top:.25rem;text-transform:uppercase;letter-spacing:.05em}
+
+        .tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin:3.5rem 0 0}
+        .tab{padding:.9rem 1.8rem;font-size:.9rem;color:var(--muted);cursor:pointer;border:none;border-bottom:2px solid transparent;transition:all .25s;background:none;font-family:inherit;font-weight:500}
+        .tab:hover{color:var(--text)}
+        .tab.active{color:var(--text);border-bottom-color:var(--text)}
+        .panel{display:none;padding:3rem 0;animation:fade .4s ease}
+        .panel.active{display:block}
+        @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+        .faculty-list{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+        .faculty-row{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.5rem;background:var(--card);border-bottom:1px solid var(--border);transition:background .2s}
+        .faculty-row:last-child{border-bottom:none}
+        .faculty-row:hover{background:#f5f5f7}
+        .faculty-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#f0f0f0}
+        .faculty-info{flex:1;min-width:0}
+        .faculty-name{font-weight:600;font-size:.95rem}
+        .faculty-meta{font-size:.8rem;color:var(--muted);margin-top:.15rem}
+        .faculty-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:.45rem}
+        .tag{font-size:.72rem;padding:.2rem .65rem;border-radius:100px;background:rgba(0,113,227,.08);color:var(--accent);font-weight:500;white-space:nowrap}
+
+        .group-label{padding:.85rem 1.5rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:600;background:#f5f5f7;border-bottom:1px solid var(--border)}
+
+        table{width:100%;border-collapse:collapse;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+        thead{background:#f5f5f7}
+        th{padding:1rem 1.5rem;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
+        td{padding:1.1rem 1.5rem;font-size:.92rem;border-top:1px solid var(--border)}
+        tr:hover td{background:#fafafa}
+        .badge{font-size:.72rem;padding:.2rem .65rem;border-radius:100px;font-weight:500}
+        .badge-ug{background:rgba(52,199,89,.12);color:#1a8d47}
+        .badge-pg{background:rgba(0,113,227,.1);color:var(--accent)}
+        .badge-r{background:rgba(255,149,0,.12);color:#c27800}
+
+        .research-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+        .research-item{padding:2rem;border:1px solid var(--border);border-radius:16px;transition:border-color .3s}
+        .research-item:hover{border-color:rgba(0,0,0,.15)}
+        .research-item h4{font-size:1.05rem;margin-bottom:.6rem;font-weight:600}
+        .research-item p{font-size:.88rem;color:var(--muted);line-height:1.55}
+
+        .labs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+        .lab-card{border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .3s}
+        .lab-card:hover{border-color:rgba(0,0,0,.15)}
+        .lab-img{height:140px;background:#f5f5f7;display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:var(--muted)}
+        .lab-body{padding:1.5rem}
+        .lab-body h4{font-size:1rem;margin-bottom:.75rem;font-weight:600}
+        .lab-body ul{list-style:none;display:flex;flex-direction:column;gap:.45rem}
+        .lab-body li{font-size:.85rem;color:var(--muted);display:flex;align-items:center;gap:.6rem}
+        .lab-body li i{color:var(--accent);font-size:.6rem}
+
+        .depts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+        .dept-item{display:flex;align-items:center;justify-content:space-between;padding:2rem;background:var(--card);transition:background .2s}
+        .dept-item:hover{background:#f5f5f7}
+        .dept-item h3{font-size:1.05rem;font-weight:600}
+        .dept-item p{font-size:.85rem;color:var(--muted);margin-top:.2rem;max-width:380px}
+        .dept-arrow{color:var(--muted);font-size:.85rem;transition:transform .2s}
+        .dept-item:hover .dept-arrow{transform:translateX(3px);color:var(--text)}
+
+        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;padding:5rem 0 0;border-top:1px solid var(--border)}
+        .contact-block{display:flex;flex-direction:column;gap:1.8rem}
+        .contact-row{display:flex;gap:1.2rem;align-items:flex-start}
+        .contact-row i{color:var(--muted);margin-top:3px;width:16px;text-align:center}
+        .contact-row h4{font-size:.95rem;font-weight:600;margin-bottom:.2rem}
+        .contact-row p,.contact-row a{font-size:.9rem;color:var(--muted);line-height:1.6}
+        .contact-row a:hover{color:var(--text)}
+
+        footer{text-align:center;padding:3rem 2rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border);max-width:1080px;margin:0 auto}
+        footer p+p{margin-top:.4rem}
+
+        @media(max-width:768px){
+            .hero h1{font-size:2.4rem;padding:0 1rem}
+            .hero p{font-size:1.05rem}
+            .section-title{font-size:2rem}
+            .stats{grid-template-columns:repeat(3,1fr)}
+            .stat-num{font-size:2rem}
+            .stat{padding:1.5rem .5rem}
+            .research-grid,.labs-grid{grid-template-columns:1fr}
+            .depts-grid{grid-template-columns:1fr}
+            .contact-grid{grid-template-columns:1fr;gap:2.5rem}
+            nav{display:none}
+            .tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
+            .tab{white-space:nowrap;padding:.8rem 1.2rem}
+            .faculty-row{padding:.9rem 1rem;gap:.8rem}
+            .faculty-avatar{width:38px;height:38px}
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/en/b/b5/DTU%2C_Delhi_official_logo.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail_unscaled&_=20110525104033" alt="DTU Logo">
+            <span>Delhi Technological University</span>
+        </div>
+        <nav>
+            <a href="#it">Information Technology</a>
+            <a href="#cse">Computer Science</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>Engineering the future of technology.</h1>
+    <p>Delhi Technological University is a premier institution committed to excellence in education, research, and innovation across computing and engineering disciplines.</p>
+    <a href="#it" class="hero-link">Explore departments <i class="fas fa-arrow-right"></i></a>
+</section>
+
+<!-- IT Department -->
+<section id="it">
+    <p class="section-label">Department of Information Technology</p>
+    <h2 class="section-title">Where computing meets innovation.</h2>
+    <p class="section-desc">The Department of Information Technology at DTU presents a strong and evolving research profile aligned with contemporary trends in computing and digital transformation.</p>
+
+    <div class="stats">
+        <div class="stat"><div class="stat-num">180</div><div class="stat-label">B.Tech Intake</div></div>
+        <div class="stat"><div class="stat-num">25+</div><div class="stat-label">Faculty</div></div>
+        <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Research Labs</div></div>
+    </div>
+
+    <div class="tabs">
+        <button class="tab active" data-tab="it-faculty">Faculty</button>
+        <button class="tab" data-tab="it-programs">Programs</button>
+        <button class="tab" data-tab="it-research">Research</button>
+        <button class="tab" data-tab="it-labs">Labs</button>
+    </div>
+
+    <div class="panel active" id="it-faculty">
+        <div class="faculty-list">
+            <div class="faculty-row">
+                <div class="faculty-info" style="text-align:center;color:var(--muted);font-size:.85rem;padding:1.5rem">Faculty profiles are available on the official department page.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel" id="it-programs">
+        <table>
+            <thead><tr><th>Program</th><th>Duration</th><th>Intake</th><th>Focus</th><th>Type</th></tr></thead>
+            <tbody>
+                <tr><td><strong>B.Tech</strong> Information Technology</td><td>4 Years</td><td>180</td><td>Software, Networking, OS</td><td><span class="badge badge-ug">UG</span></td></tr>
+                <tr><td><strong>B.Tech</strong> Cyber Security</td><td>4 Years</td><td>60</td><td>Cryptography, Forensics</td><td><span class="badge badge-ug">UG</span></td></tr>
+                <tr><td><strong>M.Tech</strong> Information Technology</td><td>2 Years</td><td>25</td><td>Data Science, AI/ML</td><td><span class="badge badge-pg">PG</span></td></tr>
+                <tr><td><strong>M.Tech</strong> (By Research)</td><td>2 Years</td><td>12</td><td>IT Research Specializations</td><td><span class="badge badge-r">Research</span></td></tr>
+                <tr><td><strong>Ph.D</strong> Information Technology</td><td>3–5 Years</td><td>—</td><td>Doctoral Research</td><td><span class="badge badge-r">Research</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="panel" id="it-research">
+        <div class="research-grid">
+            <div class="research-item"><h4>Computer Networks & Security</h4><p>Network protocols, cybersecurity frameworks, privacy-preserving computing, and resilient infrastructure.</p></div>
+            <div class="research-item"><h4>Artificial Intelligence & ML</h4><p>Intelligent systems, ethical AI, and machine learning for healthcare, finance, and smart cities.</p></div>
+            <div class="research-item"><h4>Data Science & Big Data</h4><p>Big data processing, data mining, business intelligence, and knowledge discovery at scale.</p></div>
+            <div class="research-item"><h4>Cloud & Distributed Systems</h4><p>Cloud architecture, distributed computing, and high-performance scalable solutions.</p></div>
+            <div class="research-item"><h4>Cyber Security & Forensics</h4><p>Cryptography, network security, digital forensics, and threat intelligence.</p></div>
+            <div class="research-item"><h4>Internet of Things</h4><p>Secure IoT ecosystems, smart city applications, and industrial IoT solutions.</p></div>
+        </div>
+    </div>
+
+    <div class="panel" id="it-labs">
+        <div class="labs-grid">
+            <div class="lab-card">
+                <div class="lab-img"><i class="fas fa-code"></i></div>
+                <div class="lab-body"><h4>Programming Laboratory</h4><ul><li><i class="fas fa-circle"></i>High-performance computing systems</li><li><i class="fas fa-circle"></i>Latest development toolchains</li><li><i class="fas fa-circle"></i>24/7 student access</li><li><i class="fas fa-circle"></i>AI/ML workstations</li></ul></div>
+            </div>
+            <div class="lab-card">
+                <div class="lab-img"><i class="fas fa-chart-bar"></i></div>
+                <div class="lab-body"><h4>Multi-Model Data Analytics Lab</h4><ul><li><i class="fas fa-circle"></i>Advanced analytics platforms</li><li><i class="fas fa-circle"></i>Big data processing cluster</li><li><i class="fas fa-circle"></i>Visualization dashboards</li><li><i class="fas fa-circle"></i>Industry-sponsored projects</li></ul></div>
+            </div>
+            <div class="lab-card">
+                <div class="lab-img"><i class="fas fa-shield-alt"></i></div>
+                <div class="lab-body"><h4>Cyber Security Lab</h4><ul><li><i class="fas fa-circle"></i>Penetration testing environment</li><li><i class="fas fa-circle"></i>Digital forensics toolkit</li><li><i class="fas fa-circle"></i>Network security simulation</li><li><i class="fas fa-circle"></i>Cryptography research tools</li></ul></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CSE Department -->
+<section id="cse" style="padding-top:0">
+    <p class="section-label">Department of Computer Science & Engineering</p>
+    <h2 class="section-title">Faculty.</h2>
+    <p class="section-desc" style="margin-bottom:3rem">A distinguished team of professors, researchers, and educators driving innovation in computer science.</p>
+
+    <div class="faculty-list">
+
+        <div class="group-label">Head of Department</div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/anilsparihar.jpg" alt="Prof. Anil Singh Parihar">
+            <div class="faculty-info">
+                <div class="faculty-name">Prof. Anil Singh Parihar</div>
+                <div class="faculty-meta">Professor · B.Tech, M.E., Ph.D</div>
+                <div class="faculty-tags"><span class="tag">Pattern Recognition</span><span class="tag">Computer Vision</span><span class="tag">AI</span><span class="tag">Biometric Systems</span></div>
+            </div>
+        </div>
+
+        <div class="group-label">Associate Head of Department</div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/rajeshkyadav.jpg" alt="Dr. R K Yadav">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. R K Yadav</div>
+                <div class="faculty-meta">Associate Professor · B.E, M.Tech, Ph.D</div>
+                <div class="faculty-tags"><span class="tag">Mobile Computing</span><span class="tag">Wireless Sensor Network</span><span class="tag">Computer Networks</span></div>
+            </div>
+        </div>
+
+        <div class="group-label">Professors</div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/rajnijindal.jpg" alt="Prof. Rajni Jindal">
+            <div class="faculty-info">
+                <div class="faculty-name">Prof. Rajni Jindal</div>
+                <div class="faculty-meta">Professor · MCA, M.E., Ph.D</div>
+                <div class="faculty-tags"><span class="tag">Database Systems</span><span class="tag">Data Mining</span><span class="tag">Operating Systems</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/dayagupta.jpg" alt="Prof. Daya Gupta">
+            <div class="faculty-info">
+                <div class="faculty-name">Prof. Daya Gupta</div>
+                <div class="faculty-meta">Professor · M.Sc, Post M.Sc. Diploma, Ph.D</div>
+                <div class="faculty-tags"><span class="tag">Software Engineering</span><span class="tag">Artificial Intelligence</span><span class="tag">Security Engineering</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/vinodkumar.jpg" alt="Prof. Vinod Kumar">
+            <div class="faculty-info">
+                <div class="faculty-name">Prof. Vinod Kumar</div>
+                <div class="faculty-meta">Professor · B.E, M.Tech, Ph.D</div>
+                <div class="faculty-tags"><span class="tag">Computer Networks</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/manojkumar.jpg" alt="Prof. Manoj Kumar">
+            <div class="faculty-info">
+                <div class="faculty-name">Prof. Manoj Kumar</div>
+                <div class="faculty-meta">Professor · B.Tech, M.Tech, Ph.D</div>
+                <div class="faculty-tags"><span class="tag">Information Security</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/rahulkatarya.jpg" alt="Prof. Rahul Katarya">
+            <div class="faculty-info">
+                <div class="faculty-name">Prof. Rahul Katarya</div>
+                <div class="faculty-meta">Professor · B.Tech, M.Tech, Ph.D</div>
+                <div class="faculty-tags"><span class="tag">Big Data Analytics</span><span class="tag">Social Networks</span><span class="tag">Web Mining</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/shailenderkumar.jpg" alt="Prof. Shailender Kumar">
+            <div class="faculty-info">
+                <div class="faculty-name">Prof. Shailender Kumar</div>
+                <div class="faculty-meta">Professor · B.E, Ph.D</div>
+                <div class="faculty-tags"><span class="tag">Database Systems</span><span class="tag">Big Data</span><span class="tag">Machine Learning</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/aruna.jpg" alt="Prof. Aruna Bhat">
+            <div class="faculty-info">
+                <div class="faculty-name">Prof. Aruna Bhat</div>
+                <div class="faculty-meta">Professor · B.Tech, M.Tech, Ph.D</div>
+                <div class="faculty-tags"><span class="tag">Machine Learning</span><span class="tag">Deep Learning</span><span class="tag">NLP</span><span class="tag">Entrepreneurship</span></div>
+            </div>
+        </div>
+
+        <div class="group-label">Assistant Professors</div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/nipunbansal.jpg" alt="Dr. Nipun Bansal">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Nipun Bansal</div>
+                <div class="faculty-meta">B.Tech, M.Tech, Ph.D</div>
+                <div class="faculty-tags"><span class="tag">Cyber Intelligence</span><span class="tag">AI</span><span class="tag">Social Media Mining</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/minnijain.jpg" alt="Dr. Minni Jain">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Minni Jain</div>
+                <div class="faculty-meta">B.Tech, M.Tech, Ph.D</div>
+                <div class="faculty-tags"><span class="tag">Social Media Analysis</span><span class="tag">Deep Learning</span><span class="tag">NLP</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/sanjaykr.jpg" alt="Dr. Sanjay Kumar">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Sanjay Kumar</div>
+                <div class="faculty-meta">B.Tech, M.Tech (IIT Delhi), Ph.D (IIT Delhi)</div>
+                <div class="faculty-tags"><span class="tag">Complex Networks</span><span class="tag">Data Science</span><span class="tag">Recommender Systems</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/rohitbeniwal.jpg" alt="Dr. Rohit Beniwal">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Rohit Beniwal</div>
+                <div class="faculty-meta">B.Tech, M.Tech, Ph.D (NSIT)</div>
+                <div class="faculty-tags"><span class="tag">Semantic Web</span><span class="tag">Software Engineering</span><span class="tag">Evolutionary Computing</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/pgs.jpg" alt="Dr. Prashant Shambharkar">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Prashant Giridhar Shambharkar</div>
+                <div class="faculty-meta">B.E, M.Tech, Ph.D (Computer Engineering)</div>
+                <div class="faculty-tags"><span class="tag">Audio Visual Classification</span><span class="tag">Deep Learning</span><span class="tag">Real Time Systems</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/gullkaur.jpg" alt="Gull Kaur">
+            <div class="faculty-info">
+                <div class="faculty-name">Gull Kaur</div>
+                <div class="faculty-meta">B.Tech, M.Tech</div>
+                <div class="faculty-tags"><span class="tag">Data Analytics</span><span class="tag">Big Data</span><span class="tag">Machine Learning</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/garima_new1.jpg" alt="Garima Chhikara">
+            <div class="faculty-info">
+                <div class="faculty-name">Garima Chhikara</div>
+                <div class="faculty-meta">B.Tech, M.Tech, Ph.D Pursuing (IITD)</div>
+                <div class="faculty-tags"><span class="tag">NLP</span><span class="tag">Responsible AI</span><span class="tag">Computational Social Science</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/anukriti.jpg" alt="Anukriti Kaushal">
+            <div class="faculty-info">
+                <div class="faculty-name">Anukriti Kaushal</div>
+                <div class="faculty-meta">B.Tech, M.Tech</div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/Rajeev.jpg" alt="Dr. Rajeev Kumar">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Rajeev Kumar</div>
+                <div class="faculty-meta">B.Tech, M.Tech, Ph.D, Post-Doctorate</div>
+                <div class="faculty-tags"><span class="tag">AI Privacy & Security</span><span class="tag">Steganography</span><span class="tag">Digital Forensics</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/kavinder.jpg" alt="Dr. Kavinder Singh">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Kavinder Singh</div>
+                <div class="faculty-meta">B.Tech, M.Tech, Ph.D</div>
+                <div class="faculty-tags"><span class="tag">Image Processing</span><span class="tag">Computer Vision</span><span class="tag">Pattern Recognition</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/anurag.jpg" alt="Dr. Anurag Goel">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Anurag Goel</div>
+                <div class="faculty-meta">B.Tech, M.Tech, Ph.D (IIIT Delhi)</div>
+                <div class="faculty-tags"><span class="tag">Machine Learning</span><span class="tag">Deep Learning</span><span class="tag">Graph Algorithms</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/pawan.jpg" alt="Dr. Pawan Singh Mehra">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Pawan Singh Mehra</div>
+                <div class="faculty-meta">B.E, M.Tech, Ph.D</div>
+                <div class="faculty-tags"><span class="tag">Quantum Computing</span><span class="tag">Blockchain</span><span class="tag">IoT</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/snigdha.jpg" alt="Dr. Snigdha Agrawal">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Snigdha Agrawal</div>
+                <div class="faculty-meta">Ph.D, M.Tech, B.Tech</div>
+                <div class="faculty-tags"><span class="tag">Machine Learning</span><span class="tag">Medical Imaging</span><span class="tag">Computer Vision</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/moirangthem.jpg" alt="Dr. Moirangthem Biken Singh">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Moirangthem Biken Singh</div>
+                <div class="faculty-meta">B.Tech (NIT Manipur), M.Tech (NIT Kurukshetra), Ph.D (IIT BHU)</div>
+                <div class="faculty-tags"><span class="tag">IoT</span><span class="tag">Fog Computing</span><span class="tag">Federated Learning</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/piyushrawat.jpg" alt="Dr. Piyush Rawat">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Piyush Rawat</div>
+                <div class="faculty-meta">Ph.D</div>
+                <div class="faculty-tags"><span class="tag">Sensor Networks</span><span class="tag">IoT</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/Neha_Gupta.jpeg" alt="Dr. Neha Gupta">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Neha Gupta</div>
+                <div class="faculty-meta">Ph.D, M.Tech, B.Tech</div>
+                <div class="faculty-tags"><span class="tag">Software Testing</span><span class="tag">Optimization</span><span class="tag">NLP</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/nemalikantianand.jpg" alt="Dr. Nemalikanti Anand">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Nemalikanti Anand</div>
+                <div class="faculty-meta">Ph.D</div>
+                <div class="faculty-tags"><span class="tag">Cryptography</span><span class="tag">Cyber Security</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/ilakaushik.jpg" alt="Ila Kaushik">
+            <div class="faculty-info">
+                <div class="faculty-name">Ila Kaushik</div>
+                <div class="faculty-meta">B.Tech, M.Tech, Ph.D (Pursuing)</div>
+                <div class="faculty-tags"><span class="tag">Machine Learning</span><span class="tag">Blockchain</span><span class="tag">Cyber Security</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/gunjanchugh.jpg" alt="Dr. Gunjan Chugh">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Gunjan Chugh</div>
+                <div class="faculty-meta">B.Tech, M.Tech, Ph.D</div>
+                <div class="faculty-tags"><span class="tag">AI</span><span class="tag">Deep Learning</span><span class="tag">NLP</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/rahulkumar.jpg" alt="Dr. Rahul Kumar">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Rahul Kumar</div>
+                <div class="faculty-meta">Ph.D, M.Tech, B.Tech</div>
+                <div class="faculty-tags"><span class="tag">Machine Learning</span><span class="tag">Deep Learning</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/ashishkumar.jpg" alt="Dr. Ashish Kumar">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Ashish Kumar</div>
+                <div class="faculty-meta">B.E, M.Tech, Ph.D</div>
+                <div class="faculty-tags"><span class="tag">Cryptography</span><span class="tag">Data Privacy</span><span class="tag">Computer Vision</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/anjalibansal.jpg" alt="Anjali Bansal">
+            <div class="faculty-info">
+                <div class="faculty-name">Anjali Bansal</div>
+                <div class="faculty-meta">B.Tech, M.Tech, Ph.D (Pursuing)</div>
+                <div class="faculty-tags"><span class="tag">Machine Learning</span><span class="tag">Cloud Computing</span><span class="tag">Software Engineering</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/sunakshimehra.jpg" alt="Dr. Sunakshi Mehra">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Sunakshi Mehra</div>
+                <div class="faculty-meta">Ph.D</div>
+                <div class="faculty-tags"><span class="tag">Speech Recognition</span><span class="tag">NLP</span><span class="tag">Signal Processing</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/poojagupta.jpg" alt="Dr. Pooja Gupta">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Pooja Gupta</div>
+                <div class="faculty-meta">Ph.D (IIITD), M.Tech (IIITD), B.Tech</div>
+                <div class="faculty-tags"><span class="tag">Machine Learning</span><span class="tag">Deep Learning</span><span class="tag">Information Fusion</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/aditizear.jpg" alt="Dr. Aditi Zear">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Aditi Zear</div>
+                <div class="faculty-meta">Ph.D, M.Tech, B.Tech</div>
+                <div class="faculty-tags"><span class="tag">UAV Networks</span><span class="tag">Data Hiding</span><span class="tag">Network Recovery</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/anshikaarora.jpg" alt="Dr. Anshika Arora">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Anshika Arora</div>
+                <div class="faculty-meta">B.Tech, M.Tech (Gold Medalist), Ph.D (NSUT)</div>
+                <div class="faculty-tags"><span class="tag">Data Science</span><span class="tag">Soft Computing</span><span class="tag">Software Engineering</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/bhawana.jpg" alt="Dr. Bhawana">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Bhawana</div>
+                <div class="faculty-meta">B.Tech, M.Tech, Ph.D</div>
+                <div class="faculty-tags"><span class="tag">Blockchain</span><span class="tag">5G/6G</span><span class="tag">Post Quantum Cryptography</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/yeshwantsingh.jpg" alt="Dr. Yeshwant Singh">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Yeshwant Singh</div>
+                <div class="faculty-meta">B.Tech, M.Tech, Ph.D</div>
+                <div class="faculty-tags"><span class="tag">Deep Learning</span><span class="tag">Audio Signal Processing</span><span class="tag">Non-Euclidean Spaces</span></div>
+            </div>
+        </div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/indusingh.jpg" alt="Dr. Indu Singh">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Indu Singh</div>
+                <div class="faculty-meta">B.Tech, M.Tech, Ph.D · Contractual</div>
+                <div class="faculty-tags"><span class="tag">Database</span><span class="tag">Data Mining</span><span class="tag">Information Security</span></div>
+            </div>
+        </div>
+
+        <div class="group-label">Programmer</div>
+        <div class="faculty-row">
+            <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/manojsethi.jpg" alt="Dr. Manoj Sethi">
+            <div class="faculty-info">
+                <div class="faculty-name">Dr. Manoj Sethi</div>
+                <div class="faculty-meta">M.E., LMCSI, Ph.D</div>
+                <div class="faculty-tags"><span class="tag">DBMS</span><span class="tag">Data Warehousing</span><span class="tag">Machine Learning</span></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="contact-grid" style="margin-top:5rem">
+        <div class="contact-block">
+            <div class="contact-row"><i class="fas fa-map-marker-alt"></i><div><h4>Address</h4><p>Delhi Technological University, Shahbad Daulatpur,<br>Main Bawana Road, Delhi-110042</p></div></div>
+            <div class="contact-row"><i class="fas fa-phone"></i><div><h4>Phone</h4><p>+91-11-27871018<br>+91-11-27871023 (Fax)</p></div></div>
+        </div>
+        <div class="contact-block">
+            <div class="contact-row"><i class="fas fa-envelope"></i><div><h4>Email</h4><p><a href="mailto:dtumitr@dtu.ac.in">dtumitr@dtu.ac.in</a><br><a href="mailto:info@dtu.ac.in">info@dtu.ac.in</a></p></div></div>
+            <div class="contact-row"><i class="fas fa-clock"></i><div><h4>Office Hours</h4><p>Mon – Fri: 9:30 AM – 5:30 PM<br>Sat: 9:30 AM – 1:00 PM</p></div></div>
+        </div>
+    </div>
+</section>
+
+<footer id="contact">
+    <p>&copy; 2026 Delhi Technological University. All rights reserved.</p>
+    <p>Shahbad Daulatpur, Main Bawana Road, Delhi-110042</p>
+</footer>
+
+<script>
+document.querySelectorAll('.tab').forEach(t=>{
+    t.addEventListener('click',()=>{
+        t.closest('section').querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+        t.closest('section').querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+        t.classList.add('active');
+        document.getElementById(t.dataset.tab).classList.add('active');
+    });
+});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+});
+</script>
+</body>
+</html>
