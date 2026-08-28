@@ -3,124 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delhi Technological University</title>
+    <title>Experiment 1 | DTU CSE</title>
+    <!-- External Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        :root{--bg:#fbfbfd;--text:#1d1d1f;--muted:#86868b;--accent:#0071e3;--card:#fff;--border:rgba(0,0,0,.06)}
-        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
-        a{color:inherit;text-decoration:none}
-
-        header{position:sticky;top:0;z-index:100;background:rgba(251,251,253,.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--border)}
-        .header-inner{max-width:1080px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px}
-        .logo{display:flex;align-items:center;gap:12px}
-        .logo img{height:32px;width:auto}
-        .logo span{font-size:1.05rem;font-weight:600;letter-spacing:-.01em}
-        nav{display:flex;gap:2rem}
-        nav a{font-size:.85rem;color:var(--muted);transition:color .3s}
-        nav a:hover{color:var(--text)}
-
-        .hero{position:relative;text-align:center;padding:10rem 2rem 6rem;background:url('https://cteldtu.com/images/maincampus.jpg') center/cover no-repeat;min-height:520px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-        .hero::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,.52)}
-        .hero>*{position:relative;z-index:1}
-        .hero h1{font-size:3.5rem;font-weight:700;letter-spacing:-.035em;line-height:1.1;margin-bottom:1.5rem;color:#fff}
-        .hero p{font-size:1.25rem;color:rgba(255,255,255,.8);max-width:580px;margin:0 auto 2.5rem;line-height:1.5}
-        .hero-link{font-size:1.1rem;color:#fff;border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:2px;display:inline-flex;align-items:center;gap:6px;transition:gap .3s,border-color .3s}
-        .hero-link:hover{gap:10px;border-color:#fff}
-
-        section{max-width:1080px;margin:0 auto;padding:5rem 2rem}
-        .section-label{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:600;margin-bottom:.75rem}
-        .section-title{font-size:2.8rem;font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-bottom:1.25rem}
-        .section-desc{font-size:1.15rem;color:var(--muted);max-width:620px;line-height:1.6}
-
-        .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin:3.5rem 0}
-        .stat{text-align:center;padding:2.5rem 1rem;background:var(--card)}
-        .stat-num{font-size:2.8rem;font-weight:700;letter-spacing:-.03em}
-        .stat-label{font-size:.8rem;color:var(--muted);margin-top:.25rem;text-transform:uppercase;letter-spacing:.05em}
-
-        .tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin:3.5rem 0 0}
-        .tab{padding:.9rem 1.8rem;font-size:.9rem;color:var(--muted);cursor:pointer;border:none;border-bottom:2px solid transparent;transition:all .25s;background:none;font-family:inherit;font-weight:500}
-        .tab:hover{color:var(--text)}
-        .tab.active{color:var(--text);border-bottom-color:var(--text)}
-        .panel{display:none;padding:3rem 0;animation:fade .4s ease}
-        .panel.active{display:block}
-        @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-
-        .faculty-list{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:16px;overflow:hidden}
-        .faculty-row{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.5rem;background:var(--card);border-bottom:1px solid var(--border);transition:background .2s}
-        .faculty-row:last-child{border-bottom:none}
-        .faculty-row:hover{background:#f5f5f7}
-        .faculty-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#f0f0f0}
-        .faculty-info{flex:1;min-width:0}
-        .faculty-name{font-weight:600;font-size:.95rem}
-        .faculty-meta{font-size:.8rem;color:var(--muted);margin-top:.15rem}
-        .faculty-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:.45rem}
-        .tag{font-size:.72rem;padding:.2rem .65rem;border-radius:100px;background:rgba(0,113,227,.08);color:var(--accent);font-weight:500;white-space:nowrap}
-
-        .group-label{padding:.85rem 1.5rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:600;background:#f5f5f7;border-bottom:1px solid var(--border)}
-
-        table{width:100%;border-collapse:collapse;border:1px solid var(--border);border-radius:16px;overflow:hidden}
-        thead{background:#f5f5f7}
-        th{padding:1rem 1.5rem;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
-        td{padding:1.1rem 1.5rem;font-size:.92rem;border-top:1px solid var(--border)}
-        tr:hover td{background:#fafafa}
-        .badge{font-size:.72rem;padding:.2rem .65rem;border-radius:100px;font-weight:500}
-        .badge-ug{background:rgba(52,199,89,.12);color:#1a8d47}
-        .badge-pg{background:rgba(0,113,227,.1);color:var(--accent)}
-        .badge-r{background:rgba(255,149,0,.12);color:#c27800}
-
-        .research-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-        .research-item{padding:2rem;border:1px solid var(--border);border-radius:16px;transition:border-color .3s}
-        .research-item:hover{border-color:rgba(0,0,0,.15)}
-        .research-item h4{font-size:1.05rem;margin-bottom:.6rem;font-weight:600}
-        .research-item p{font-size:.88rem;color:var(--muted);line-height:1.55}
-
-        .labs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-        .lab-card{border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .3s}
-        .lab-card:hover{border-color:rgba(0,0,0,.15)}
-        .lab-img{height:140px;background:#f5f5f7;display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:var(--muted)}
-        .lab-body{padding:1.5rem}
-        .lab-body h4{font-size:1rem;margin-bottom:.75rem;font-weight:600}
-        .lab-body ul{list-style:none;display:flex;flex-direction:column;gap:.45rem}
-        .lab-body li{font-size:.85rem;color:var(--muted);display:flex;align-items:center;gap:.6rem}
-        .lab-body li i{color:var(--accent);font-size:.6rem}
-
-        .depts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden}
-        .dept-item{display:flex;align-items:center;justify-content:space-between;padding:2rem;background:var(--card);transition:background .2s}
-        .dept-item:hover{background:#f5f5f7}
-        .dept-item h3{font-size:1.05rem;font-weight:600}
-        .dept-item p{font-size:.85rem;color:var(--muted);margin-top:.2rem;max-width:380px}
-        .dept-arrow{color:var(--muted);font-size:.85rem;transition:transform .2s}
-        .dept-item:hover .dept-arrow{transform:translateX(3px);color:var(--text)}
-
-        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;padding:5rem 0 0;border-top:1px solid var(--border)}
-        .contact-block{display:flex;flex-direction:column;gap:1.8rem}
-        .contact-row{display:flex;gap:1.2rem;align-items:flex-start}
-        .contact-row i{color:var(--muted);margin-top:3px;width:16px;text-align:center}
-        .contact-row h4{font-size:.95rem;font-weight:600;margin-bottom:.2rem}
-        .contact-row p,.contact-row a{font-size:.9rem;color:var(--muted);line-height:1.6}
-        .contact-row a:hover{color:var(--text)}
-
-        footer{text-align:center;padding:3rem 2rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border);max-width:1080px;margin:0 auto}
-        footer p+p{margin-top:.4rem}
-
-        @media(max-width:768px){
-            .hero h1{font-size:2.4rem;padding:0 1rem}
-            .hero p{font-size:1.05rem}
-            .section-title{font-size:2rem}
-            .stats{grid-template-columns:repeat(3,1fr)}
-            .stat-num{font-size:2rem}
-            .stat{padding:1.5rem .5rem}
-            .research-grid,.labs-grid{grid-template-columns:1fr}
-            .depts-grid{grid-template-columns:1fr}
-            .contact-grid{grid-template-columns:1fr;gap:2.5rem}
-            nav{display:none}
-            .tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
-            .tab{white-space:nowrap;padding:.8rem 1.2rem}
-            .faculty-row{padding:.9rem 1rem;gap:.8rem}
-            .faculty-avatar{width:38px;height:38px}
-        }
-    </style>
+    <!-- Internal Modular CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -130,91 +17,17 @@
             <img src="https://upload.wikimedia.org/wikipedia/en/b/b5/DTU%2C_Delhi_official_logo.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail_unscaled&_=20110525104033" alt="DTU Logo">
             <span>Delhi Technological University</span>
         </div>
-        <nav>
-            <a href="#it">Information Technology</a>
-            <a href="#cse">Computer Science</a>
-            <a href="#contact">Contact</a>
-        </nav>
     </div>
 </header>
 
 <section class="hero">
     <h1>Engineering the future of technology.</h1>
     <p>Delhi Technological University is a premier institution committed to excellence in education, research, and innovation across computing and engineering disciplines.</p>
-    <a href="#it" class="hero-link">Explore departments <i class="fas fa-arrow-right"></i></a>
+    <a href="#cse" class="hero-link">Explore CSE Department <i class="fas fa-arrow-right"></i></a>
 </section>
 
-<!-- IT Department -->
-<section id="it">
-    <p class="section-label">Department of Information Technology</p>
-    <h2 class="section-title">Where computing meets innovation.</h2>
-    <p class="section-desc">The Department of Information Technology at DTU presents a strong and evolving research profile aligned with contemporary trends in computing and digital transformation.</p>
-
-    <div class="stats">
-        <div class="stat"><div class="stat-num">180</div><div class="stat-label">B.Tech Intake</div></div>
-        <div class="stat"><div class="stat-num">25+</div><div class="stat-label">Faculty</div></div>
-        <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Research Labs</div></div>
-    </div>
-
-    <div class="tabs">
-        <button class="tab active" data-tab="it-faculty">Faculty</button>
-        <button class="tab" data-tab="it-programs">Programs</button>
-        <button class="tab" data-tab="it-research">Research</button>
-        <button class="tab" data-tab="it-labs">Labs</button>
-    </div>
-
-    <div class="panel active" id="it-faculty">
-        <div class="faculty-list">
-            <div class="faculty-row">
-                <div class="faculty-info" style="text-align:center;color:var(--muted);font-size:.85rem;padding:1.5rem">Faculty profiles are available on the official department page.</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="panel" id="it-programs">
-        <table>
-            <thead><tr><th>Program</th><th>Duration</th><th>Intake</th><th>Focus</th><th>Type</th></tr></thead>
-            <tbody>
-                <tr><td><strong>B.Tech</strong> Information Technology</td><td>4 Years</td><td>180</td><td>Software, Networking, OS</td><td><span class="badge badge-ug">UG</span></td></tr>
-                <tr><td><strong>B.Tech</strong> Cyber Security</td><td>4 Years</td><td>60</td><td>Cryptography, Forensics</td><td><span class="badge badge-ug">UG</span></td></tr>
-                <tr><td><strong>M.Tech</strong> Information Technology</td><td>2 Years</td><td>25</td><td>Data Science, AI/ML</td><td><span class="badge badge-pg">PG</span></td></tr>
-                <tr><td><strong>M.Tech</strong> (By Research)</td><td>2 Years</td><td>12</td><td>IT Research Specializations</td><td><span class="badge badge-r">Research</span></td></tr>
-                <tr><td><strong>Ph.D</strong> Information Technology</td><td>3–5 Years</td><td>—</td><td>Doctoral Research</td><td><span class="badge badge-r">Research</span></td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="panel" id="it-research">
-        <div class="research-grid">
-            <div class="research-item"><h4>Computer Networks & Security</h4><p>Network protocols, cybersecurity frameworks, privacy-preserving computing, and resilient infrastructure.</p></div>
-            <div class="research-item"><h4>Artificial Intelligence & ML</h4><p>Intelligent systems, ethical AI, and machine learning for healthcare, finance, and smart cities.</p></div>
-            <div class="research-item"><h4>Data Science & Big Data</h4><p>Big data processing, data mining, business intelligence, and knowledge discovery at scale.</p></div>
-            <div class="research-item"><h4>Cloud & Distributed Systems</h4><p>Cloud architecture, distributed computing, and high-performance scalable solutions.</p></div>
-            <div class="research-item"><h4>Cyber Security & Forensics</h4><p>Cryptography, network security, digital forensics, and threat intelligence.</p></div>
-            <div class="research-item"><h4>Internet of Things</h4><p>Secure IoT ecosystems, smart city applications, and industrial IoT solutions.</p></div>
-        </div>
-    </div>
-
-    <div class="panel" id="it-labs">
-        <div class="labs-grid">
-            <div class="lab-card">
-                <div class="lab-img"><i class="fas fa-code"></i></div>
-                <div class="lab-body"><h4>Programming Laboratory</h4><ul><li><i class="fas fa-circle"></i>High-performance computing systems</li><li><i class="fas fa-circle"></i>Latest development toolchains</li><li><i class="fas fa-circle"></i>24/7 student access</li><li><i class="fas fa-circle"></i>AI/ML workstations</li></ul></div>
-            </div>
-            <div class="lab-card">
-                <div class="lab-img"><i class="fas fa-chart-bar"></i></div>
-                <div class="lab-body"><h4>Multi-Model Data Analytics Lab</h4><ul><li><i class="fas fa-circle"></i>Advanced analytics platforms</li><li><i class="fas fa-circle"></i>Big data processing cluster</li><li><i class="fas fa-circle"></i>Visualization dashboards</li><li><i class="fas fa-circle"></i>Industry-sponsored projects</li></ul></div>
-            </div>
-            <div class="lab-card">
-                <div class="lab-img"><i class="fas fa-shield-alt"></i></div>
-                <div class="lab-body"><h4>Cyber Security Lab</h4><ul><li><i class="fas fa-circle"></i>Penetration testing environment</li><li><i class="fas fa-circle"></i>Digital forensics toolkit</li><li><i class="fas fa-circle"></i>Network security simulation</li><li><i class="fas fa-circle"></i>Cryptography research tools</li></ul></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CSE Department -->
-<section id="cse" style="padding-top:0">
+<!-- CSE Department Only -->
+<section id="cse">
     <p class="section-label">Department of Computer Science & Engineering</p>
     <h2 class="section-title">Faculty.</h2>
     <p class="section-desc" style="margin-bottom:3rem">A distinguished team of professors, researchers, and educators driving innovation in computer science.</p>
@@ -561,21 +374,7 @@
     <p>Shahbad Daulatpur, Main Bawana Road, Delhi-110042</p>
 </footer>
 
-<script>
-document.querySelectorAll('.tab').forEach(t=>{
-    t.addEventListener('click',()=>{
-        t.closest('section').querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
-        t.closest('section').querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-        t.classList.add('active');
-        document.getElementById(t.dataset.tab).classList.add('active');
-    });
-});
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click',e=>{
-        e.preventDefault();
-        document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth',block:'start'});
-    });
-});
-</script>
+<!-- Internal Modular JS -->
+<script src="js/script.js"></script>
 </body>
 </html>
