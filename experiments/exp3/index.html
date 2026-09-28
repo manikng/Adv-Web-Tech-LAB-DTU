@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DTU CSE — Experiment 2</title>
+
+  <!-- External icon font -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Step 1: External CSS file linked -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="home">
+
+  <a class="skip-link" href="#cse">Skip to content</a>
+
+  <!-- ============ HEADER + HORIZONTAL NAVBAR (Step 3) ============ -->
+  <header>
+    <div class="header-inner">
+      <a class="logo" href="#home">
+        <img src="../DTU_logo.png" alt="DTU Logo">
+        <span>Delhi Technological University</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <ul>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#cse">Faculty</a></li>
+          <li><a href="#register">Register</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="progress" aria-hidden="true"></div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home" aria-label="Introduction">
+    <span class="hero-chip"><i class="fa-solid fa-graduation-cap"></i> Department of Computer Science &amp; Engineering</span>
+    <h1>Engineering the future of technology.</h1>
+    <p>Delhi Technological University is a premier institution committed to excellence in education, research, and innovation across computing and engineering disciplines.</p>
+    <a href="#cse" class="hero-link">Explore CSE Department <i class="fas fa-arrow-right"></i></a>
+  </section>
+
+  <!-- Research ticker -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <div class="ticker-group">
+        <span>Machine Learning</span><span>Computer Vision</span><span>Blockchain</span><span>Quantum Computing</span><span>Natural Language Processing</span><span>IoT &amp; Fog Computing</span><span>Cyber Security</span><span>Federated Learning</span><span>Data Science</span><span>Computer Networks</span>
+      </div>
+      <div class="ticker-group">
+        <span>Machine Learning</span><span>Computer Vision</span><span>Blockchain</span><span>Quantum Computing</span><span>Natural Language Processing</span><span>IoT &amp; Fog Computing</span><span>Cyber Security</span><span>Federated Learning</span><span>Data Science</span><span>Computer Networks</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ COURSES AS FLEXBOX CARDS (Step 4) ============ -->
+  <section id="courses">
+    <p class="section-label reveal">Programs Offered</p>
+    <h2 class="section-title reveal">Courses.</h2>
+    <p class="section-desc reveal">Undergraduate, postgraduate and doctoral programs engineered for depth, rigour and real-world impact.</p>
+
+    <div class="course-grid">
+      <article class="course-card reveal">
+        <i class="fa-solid fa-code"></i>
+        <h3>B.Tech — Computer Science &amp; Engineering</h3>
+        <p class="meta">4 Years · Full Time</p>
+        <p>Core computing, systems and AI fundamentals with industry-aligned electives.</p>
+      </article>
+
+      <article class="course-card reveal">
+        <i class="fa-solid fa-microchip"></i>
+        <h3>M.Tech — Computer Engineering</h3>
+        <p class="meta">2 Years · Full Time</p>
+        <p>Advanced specialization in artificial intelligence, security and data science research.</p>
+      </article>
+
+      <article class="course-card reveal">
+        <i class="fa-solid fa-layer-group"></i>
+        <h3>M.Tech — Software Engineering</h3>
+        <p class="meta">2 Years · Full Time</p>
+        <p>Modern software architecture, DevOps culture and large-scale system design.</p>
+      </article>
+
+      <article class="course-card reveal">
+        <i class="fa-solid fa-database"></i>
+        <h3>Master of Computer Applications</h3>
+        <p class="meta">2 Years · Full Time</p>
+        <p>Applied software engineering with a focus on full-stack and cloud-native development.</p>
+      </article>
+
+      <article class="course-card reveal">
+        <i class="fa-solid fa-square-root-variable"></i>
+        <h3>B.Tech — Mathematics &amp; Computing</h3>
+        <p class="meta">4 Years · Full Time</p>
+        <p>Where rigorous mathematics meets computation, algorithms and quantitative finance.</p>
+      </article>
+
+      <article class="course-card reveal">
+        <i class="fa-solid fa-flask"></i>
+        <h3>Doctor of Philosophy (Ph.D.)</h3>
+        <p class="meta">Research · Full / Part Time</p>
+        <p>Doctoral research across machine learning, vision, security and emerging computing paradigms.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ CSE DEPARTMENT FACULTY ============ -->
+  <section id="cse">
+    <p class="section-label reveal">Department of Computer Science &amp; Engineering</p>
+    <h2 class="section-title reveal">Faculty.</h2>
+    <p class="section-desc reveal" style="margin-bottom:3rem">A distinguished team of professors, researchers, and educators driving innovation in computer science.</p>
+
+    <div class="faculty-list">
+      <div class="group-label">Head of Department</div>
+      <div class="faculty-row reveal">
+        <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/anilsparihar.jpg" alt="Prof. Anil Singh Parihar" loading="lazy">
+        <div class="faculty-info">
+          <div class="faculty-name">Prof. Anil Singh Parihar</div>
+          <div class="faculty-meta">Professor · B.Tech, M.E., Ph.D</div>
+          <div class="faculty-tags"><span class="tag">Pattern Recognition</span><span class="tag">Computer Vision</span><span class="tag">AI</span><span class="tag">Biometric Systems</span></div>
+        </div>
+      </div>
+
+      <div class="group-label">Associate Head of Department</div>
+      <div class="faculty-row reveal">
+        <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/rajeshkyadav.jpg" alt="Dr. R K Yadav" loading="lazy">
+        <div class="faculty-info">
+          <div class="faculty-name">Dr. R K Yadav</div>
+          <div class="faculty-meta">Associate Professor · B.E, M.Tech, Ph.D</div>
+          <div class="faculty-tags"><span class="tag">Mobile Computing</span><span class="tag">Wireless Sensor Networks</span><span class="tag">Computer Networks</span></div>
+        </div>
+      </div>
+
+      <div class="group-label">Professors</div>
+      <div class="faculty-row reveal">
+        <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/rajnijindal.jpg" alt="Prof. Rajni Jindal" loading="lazy">
+        <div class="faculty-info">
+          <div class="faculty-name">Prof. Rajni Jindal</div>
+          <div class="faculty-meta">Professor · MCA, M.E., Ph.D</div>
+          <div class="faculty-tags"><span class="tag">Database Systems</span><span class="tag">Data Mining</span><span class="tag">Operating Systems</span></div>
+        </div>
+      </div>
+      <div class="faculty-row reveal">
+        <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/dayagupta.jpg" alt="Prof. Daya Gupta" loading="lazy">
+        <div class="faculty-info">
+          <div class="faculty-name">Prof. Daya Gupta</div>
+          <div class="faculty-meta">Professor · M.Sc, Post M.Sc. Diploma, Ph.D</div>
+          <div class="faculty-tags"><span class="tag">Software Engineering</span><span class="tag">Artificial Intelligence</span><span class="tag">Security Engineering</span></div>
+        </div>
+      </div>
+      <div class="faculty-row reveal">
+        <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/vinodkumar.jpg" alt="Prof. Vinod Kumar" loading="lazy">
+        <div class="faculty-info">
+          <div class="faculty-name">Prof. Vinod Kumar</div>
+          <div class="faculty-meta">Professor · B.E, M.Tech, Ph.D</div>
+          <div class="faculty-tags"><span class="tag">Computer Networks</span></div>
+        </div>
+      </div>
+      <div class="faculty-row reveal">
+        <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/manojkumar.jpg" alt="Prof. Manoj Kumar" loading="lazy">
+        <div class="faculty-info">
+          <div class="faculty-name">Prof. Manoj Kumar</div>
+          <div class="faculty-meta">Professor · B.Tech, M.Tech, Ph.D</div>
+          <div class="faculty-tags"><span class="tag">Information Security</span></div>
+        </div>
+      </div>
+      <div class="faculty-row reveal">
+        <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/rahulkatarya.jpg" alt="Prof. Rahul Katarya" loading="lazy">
+        <div class="faculty-info">
+          <div class="faculty-name">Prof. Rahul Katarya</div>
+          <div class="faculty-meta">Professor · B.Tech, M.Tech, Ph.D</div>
+          <div class="faculty-tags"><span class="tag">Big Data Analytics</span><span class="tag">Social Networks</span><span class="tag">Web Mining</span></div>
+        </div>
+      </div>
+     
+      <div class="faculty-row reveal">
+        <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/indusingh.jpg" alt="Dr. Indu Singh" loading="lazy">
+        <div class="faculty-info">
+          <div class="faculty-name">Dr. Indu Singh</div>
+          <div class="faculty-meta">B.Tech, M.Tech, Ph.D Contractual</div>
+          <div class="faculty-tags"><span class="tag">Databases</span><span class="tag">Data Mining</span><span class="tag">Information Security</span></div>
+        </div>
+      </div>
+
+      <div class="group-label">Programmer</div>
+      <div class="faculty-row reveal">
+        <img class="faculty-avatar" src="https://dtu.ac.in/Web/Departments/CSE/faculty/images/manojsethi.jpg" alt="Dr. Manoj Sethi" loading="lazy">
+        <div class="faculty-info">
+          <div class="faculty-name">Dr. Manoj Sethi</div>
+          <div class="faculty-meta">M.E., LMCSI, Ph.D</div>
+          <div class="faculty-tags"><span class="tag">DBMS</span><span class="tag">Data Warehousing</span><span class="tag">Machine Learning</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REGISTRATION FORM (Step 5) ============ -->
+  <section id="register">
+    <div class="register-wrap">
+      <aside class="register-intro reveal">
+        <p class="section-label">Admissions</p>
+        <h2 class="section-title">Register.</h2>
+        <p class="section-desc">Begin your application to the CSE department. Our academic cell responds within 3 working days.</p>
+        <ol class="steps">
+          <li><span>01</span> Fill in your details below</li>
+          <li><span>02</span> Verify your email address</li>
+          <li><span>03</span> Receive your application ID</li>
+        </ol>
+      </aside>
+
+      <form class="register-form reveal" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Aarav Sharma" required>
+          </div>
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="aarav@example.com" required>
+          </div>
+          <div class="field">
+            <label for="program">Program</label>
+            <select id="program" name="program" required>
+              <option value="" disabled selected>Select a program</option>
+              <option>B.Tech — Computer Science &amp; Engineering</option>
+              <option>M.Tech — Computer Engineering</option>
+              <option>M.Tech — Software Engineering</option>
+              <option>Master of Computer Applications</option>
+              <option>Ph.D — Computer Science</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210">
+          </div>
+          <div class="field full">
+            <label for="message">Why CSE at DTU? (optional)</label>
+            <textarea id="message" name="message" placeholder="Tell us about your interests — ML, systems, security…"></textarea>
+          </div>
+          <div class="field full">
+            <label class="checkbox">
+              <input type="checkbox" required>
+              <span>I confirm the information provided is accurate and agree to the department's admission policy.</span>
+            </label>
+          </div>
+          <button type="submit" class="btn">Submit Registration <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact">
+    <div class="contact-grid">
+      <div class="contact-block">
+        <div class="contact-row">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <h4>Address</h4>
+            <p>Delhi Technological University, Shahbad Daulatpur,<br>Main Bawana Road, Delhi-110042</p>
+          </div>
+        </div>
+        <div class="contact-row">
+          <i class="fas fa-phone"></i>
+          <div>
+            <h4>Phone</h4>
+            <p>+91-11-27871018<br>+91-11-27871023 (Fax)</p>
+          </div>
+        </div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-row">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:dtumitr@dtu.ac.in">dtumitr@dtu.ac.in</a><br><a href="mailto:info@dtu.ac.in">info@dtu.ac.in</a></p>
+          </div>
+        </div>
+        <div class="contact-row">
+          <i class="fas fa-clock"></i>
+          <div>
+            <h4>Office Hours</h4>
+            <p>Mon – Fri: 9:30 AM – 5:30 PM<br>Sat: 9:30 AM – 1:00 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact-footer">
+    <p>&copy; 2026 Delhi Technological University. All rights reserved.</p>
+    <p>Shahbad Daulatpur, Main Bawana Road, Delhi-110042</p>
+  </footer>
+
+  <script>
+    const bar = document.querySelector('.progress');
+    if (!CSS.supports('animation-timeline: scroll()')) {
+      addEventListener('scroll', () => {
+        const h = document.documentElement;
+        bar.style.transform = `scaleX(${h.scrollTop / (h.scrollHeight - h.clientHeight)})`;
+      }, { passive: true });
+    }
+
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    const links = [...document.querySelectorAll('.nav a')];
+    const spy = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) links.forEach(l => l.classList.toggle('active', l.hash === '#' + e.target.id));
+    }), { rootMargin: '-40% 0px -55% 0px' });
+    document.querySelectorAll('section[id]').forEach(s => spy.observe(s));
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

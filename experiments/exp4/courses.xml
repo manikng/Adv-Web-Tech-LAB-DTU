@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="courses.xsl"?>
+<CourseCatalogue>
+    <Course>
+        <CourseID>CSE101</CourseID>
+        <CourseName>Introduction to Computer Science</CourseName>
+        <CourseCode>CS101</CourseCode>
+        <Faculty>Dr. Sarah Johnson</Faculty>
+        <Credits>4</Credits>
+        <CourseType>Core</CourseType>
+    </Course>
+    <Course>
+        <CourseID>CSE201</CourseID>
+        <CourseName>Data Structures and Algorithms</CourseName>
+        <CourseCode>CS201</CourseCode>
+        <Faculty>Prof. Michael Chen</Faculty>
+        <Credits>4</Credits>
+        <CourseType>Core</CourseType>
+    </Course>
+    <Course>
+        <CourseID>CSE301</CourseID>
+        <CourseName>Database Management Systems</CourseName>
+        <CourseCode>CS301</CourseCode>
+        <Faculty>Dr. Emily Rodriguez</Faculty>
+        <Credits>3</Credits>
+        <CourseType>Core</CourseType>
+    </Course>
+    <Course>
+        <CourseID>CSE401</CourseID>
+        <CourseName>Machine Learning Fundamentals</CourseName>
+        <CourseCode>CS401</CourseCode>
+        <Faculty>Prof. David Kim</Faculty>
+        <Credits>3</Credits>
+        <CourseType>Elective</CourseType>
+    </Course>
+    <Course>
+        <CourseID>CSE402</CourseID>
+        <CourseName>Web Development Technologies</CourseName>
+        <CourseCode>CS402</CourseCode>
+        <Faculty>Ms. Lisa Anderson</Faculty>
+        <Credits>3</Credits>
+        <CourseType>Elective</CourseType>
+    </Course>
+    <Course>
+        <CourseID>CSE403</CourseID>
+        <CourseName>Cybersecurity Essentials</CourseName>
+        <CourseCode>CS403</CourseCode>
+        <Faculty>Dr. James Wilson</Faculty>
+        <Credits>3</Credits>
+        <CourseType>Elective</CourseType>
+    </Course>
+</CourseCatalogue>

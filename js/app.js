@@ -29,6 +29,8 @@ function renderGrid() {
 }
 
 // --- FUNCTION TO LOAD EXPERIMENT IN IFRAME ---
+//here folder structure is like experiments/exp1/index.html, experiments/exp2/index.html, etc.
+// just add a new folder with name 'experiments/expi' and put a index.html file and it will automatically be added to the grid
 function loadExperiment(expNum) {
     // Yahan dekh, ye dynamically experiments/exp1/index.html ko fetch karega
     appContent.innerHTML = `<iframe src="experiments/exp${expNum}/index.html" frameborder="0" id="exp-iframe"></iframe>`;
