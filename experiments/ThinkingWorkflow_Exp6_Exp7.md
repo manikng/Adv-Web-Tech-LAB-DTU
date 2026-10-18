@@ -25,3 +25,7 @@ exp6/  config.php, schema.sql, db.php, api.php, index.php, assets/{style.css, ap
 exp7/  config.php, schema.sql, db.php, auth.php, api.php, index.php, assets/{style.css, app.js}
 Both/  Mistakestillnow.md, Lab Report .md
 ```
+
+## Exp6 Follow-up
+- **Problem faced:** Transcript used incorrect DTU-affiliation wording, saved emails were inconsistent, and the enrollment form's lower fields were unreachable.
+- **How fixed:** Keep transcript branding accurate, generate and migrate `firstname.lastname.rollno@dtu.ac.in`, and enable scrolling in the enrollment modal body.

@@ -88,7 +88,7 @@ $recentLogs = $isAuth ? $db->getRecentLogs((int)$currentUser['id'], 8) : [];
 
               <div class="form-group">
                 <label for="login-identifier">Username or Institutional Email</label>
-                <input type="text" id="login-identifier" class="form-control" placeholder="e.g. manish or manish.singh@lumina.edu" required autofocus>
+                <input type="text" id="login-identifier" class="form-control" placeholder="e.g. manish or manish.singhdtu.ac.in" required autofocus>
               </div>
 
               <div class="form-group">
@@ -137,7 +137,7 @@ $recentLogs = $isAuth ? $db->getRecentLogs((int)$currentUser['id'], 8) : [];
 
               <div class="form-group">
                 <label for="reg-email">Institutional Email *</label>
-                <input type="email" id="reg-email" class="form-control" placeholder="e.g. p.sharma@lumina.edu" required>
+                <input type="email" id="reg-email" class="form-control" placeholder="e.g. p.sharmadtu.ac.in" required>
               </div>
 
               <div class="form-group">

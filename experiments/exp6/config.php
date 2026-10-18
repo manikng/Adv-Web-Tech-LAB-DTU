@@ -25,13 +25,20 @@ define('DB_CHARSET', 'utf8mb4');
 define('SQLITE_PATH', __DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'exp6_database.sqlite');
 
 // Academic System Rubrics & Metadata
-define('APP_NAME', 'Lumina Academic SIS');
+define('APP_NAME', 'Delhi Technological University');
 define('APP_SUBTITLE', 'Enterprise Student Information System & MySQL CRUD Engine');
 define('APP_VERSION', '2.4.0');
 define('STUDENT_NAME', 'Manish Singh');
 define('ROLL_NUMBER', '23/CS/244');
 define('SUBJECT_NAME', 'Advanced Web Technologies');
 define('EXPERIMENT_NO', '06');
+
+function generateInstitutionalEmail(string $name, string $rollNo): string {
+    $namePart = strtolower(trim((string)preg_replace('/[^a-z0-9]+/i', '.', $name), '.'));
+    $rollPart = strtolower((string)preg_replace('/[^a-z0-9]+/i', '', $rollNo));
+
+    return $namePart . '.' . $rollPart . '@dtu.ac.in';
+}
 
 // Curriculum Subjects & Maximum Marks
 const SUBJECTS = [

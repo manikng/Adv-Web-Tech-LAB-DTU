@@ -167,7 +167,7 @@ class AuthDB {
             $seeds = [
                 [
                     'username' => 'manish',
-                    'email' => 'manish.singh@lumina.edu',
+                    'email' => 'manish.singhdtu.ac.in',
                     'password_hash' => $defaultHash,
                     'full_name' => 'Manish Singh',
                     'role' => 'admin',
@@ -176,7 +176,7 @@ class AuthDB {
                 ],
                 [
                     'username' => 'aarav',
-                    'email' => 'aarav.sharma@lumina.edu',
+                    'email' => 'aarav.sharmadtu.ac.in',
                     'password_hash' => $defaultHash,
                     'full_name' => 'Aarav Sharma',
                     'role' => 'student',
@@ -185,7 +185,7 @@ class AuthDB {
                 ],
                 [
                     'username' => 'sneha',
-                    'email' => 'prof.sneha@lumina.edu',
+                    'email' => 'prof.snehadtu.ac.in',
                     'password_hash' => $defaultHash,
                     'full_name' => 'Prof. Sneha Sen',
                     'role' => 'faculty',

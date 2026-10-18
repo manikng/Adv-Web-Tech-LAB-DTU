@@ -23,6 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Modals
   const studentModal = document.getElementById('student-modal');
   const studentForm = document.getElementById('student-form');
+  const studentNameInput = document.getElementById('name');
+  const rollNoInput = document.getElementById('roll_no');
+  const emailInput = document.getElementById('email');
   const modalTitle = document.getElementById('modal-title');
   const transcriptModal = document.getElementById('transcript-modal');
   const dbModal = document.getElementById('db-modal');
@@ -43,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const toastContainer = document.getElementById('toast-container');
 
   // Theme Management
-  const savedTheme = localStorage.getItem('lumina_theme') || 'dark';
+  const savedTheme = localStorage.getItem('dtu_theme') || 'dark';
   document.documentElement.setAttribute('data-theme', savedTheme);
   updateThemeIcon(savedTheme);
 
@@ -51,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const current = document.documentElement.getAttribute('data-theme') || 'dark';
     const next = current === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('lumina_theme', next);
+    localStorage.setItem('dtu_theme', next);
     updateThemeIcon(next);
   });
 
@@ -60,6 +63,19 @@ document.addEventListener('DOMContentLoaded', () => {
       themeToggle.innerHTML = theme === 'dark' ? '☀️' : '🌙';
     }
   }
+
+  function updateInstitutionalEmail() {
+    if (!emailInput) return;
+    const name = studentNameInput?.value.trim().toLowerCase()
+      .replace(/[^a-z0-9]+/g, '.')
+      .replace(/^\.+|\.+$/g, '') || '';
+    const rollNo = rollNoInput?.value.replace(/[^a-z0-9]/gi, '').toLowerCase() || '';
+    emailInput.value = name && rollNo ? `${name}.${rollNo}@dtu.ac.in` : '';
+  }
+
+  [studentNameInput, rollNoInput].forEach(input => {
+    input?.addEventListener('input', updateInstitutionalEmail);
+  });
 
   // Toast Notification
   function showToast(message, type = 'success') {
@@ -202,9 +218,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <td><span class="grade-badge ${gradeClass}">${s.grade}</span></td>
         <td>
           <div class="action-buttons">
-            <button class="action-btn" title="View Transcript" onclick="window.LuminaApp.openTranscript(${s.id})">📄</button>
-            <button class="action-btn" title="Edit Student" onclick="window.LuminaApp.openEditModal(${s.id})">✏️</button>
-            <button class="action-btn btn-delete" title="Delete Student" onclick="window.LuminaApp.openDeleteModal(${s.id})">🗑️</button>
+            <button class="action-btn" title="View Transcript" onclick="window.DtuApp.openTranscript(${s.id})">📄</button>
+            <button class="action-btn" title="Edit Student" onclick="window.DtuApp.openEditModal(${s.id})">✏️</button>
+            <button class="action-btn btn-delete" title="Delete Student" onclick="window.DtuApp.openDeleteModal(${s.id})">🗑️</button>
           </div>
         </td>
       `;
@@ -373,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-secondary);">
         <p><strong>💡 How to switch to live MySQL:</strong></p>
         <p>1. Start your local MySQL / MariaDB server (e.g. XAMPP, WAMP, Laragon, or Windows MySQL service on port 3306).</p>
-        <p>2. Import <code>exp6/schema.sql</code> into MySQL or let Lumina auto-create <code>exp6_db</code>.</p>
+        <p>2. Import <code>schema.sql</code> into MySQL or let the application auto-create <code>exp6_db</code>.</p>
         <p>3. Refresh the page to auto-connect!</p>
       </div>
     `;
@@ -395,8 +411,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Global LuminaApp object for row actions
-  window.LuminaApp = {
+  // Global DtuApp object for row actions
+  window.DtuApp = {
     openEditModal: async (id) => {
       try {
         const res = await fetch(`api.php?action=get&id=${id}`);
@@ -448,7 +464,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="transcript-header">
           <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: #64748b; font-weight: 700;">Department of Computer Science & Engineering</div>
           <h2 class="transcript-title">Official Academic Transcript</h2>
-          <div style="font-size: 0.75rem; color: #94a3b8;">Lumina Institute of Advanced Technologies • Affiliated University</div>
+          <div style="font-size: 0.75rem; color: #94a3b8;">Delhi Technological University</div>
         </div>
         <div class="transcript-meta">
           <div><strong>Candidate Name:</strong> ${escapeHtml(s.name)}</div>
@@ -522,7 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="font-size: 1.1rem; font-weight: 800; color: #0f172a;">${s.status} (Grade: ${s.grade})</div>
           </div>
           <div style="text-align: right;">
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #94a3b8;">DIGITALLY VERIFIED VIA LUMINA SIS</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #94a3b8;">DIGITALLY VERIFIED VIA DTU SIS</div>
             <div style="font-weight: 700; font-size: 0.85rem; margin-top: 0.25rem;">Registrar of Examinations</div>
           </div>
         </div>

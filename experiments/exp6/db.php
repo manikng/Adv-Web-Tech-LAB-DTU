@@ -130,6 +130,7 @@ class Database {
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
         $this->pdo->exec($sql);
         $this->ensureSeedData();
+        $this->migrateInstitutionalEmails();
     }
 
     private function initSchemaSqlite(): void {
@@ -158,6 +159,36 @@ class Database {
         ";
         $this->pdo->exec($sql);
         $this->ensureSeedData();
+        $this->migrateInstitutionalEmails();
+    }
+
+    private function migrateInstitutionalEmails(): void {
+        $this->pdo->exec('CREATE TABLE IF NOT EXISTS app_migrations (version INTEGER PRIMARY KEY)');
+        $migration = $this->pdo->query('SELECT version FROM app_migrations WHERE version = 1')->fetch();
+        if ($migration) {
+            return;
+        }
+
+        $this->pdo->beginTransaction();
+        try {
+            $students = $this->pdo->query('SELECT id, name, roll_no, email FROM students')->fetchAll();
+            $update = $this->pdo->prepare(
+                'UPDATE students SET email = :email, updated_at = CURRENT_TIMESTAMP WHERE id = :id'
+            );
+
+            foreach ($students as $student) {
+                $email = generateInstitutionalEmail($student['name'], $student['roll_no']);
+                if ($student['email'] !== $email) {
+                    $update->execute([':email' => $email, ':id' => $student['id']]);
+                }
+            }
+
+            $this->pdo->exec('INSERT INTO app_migrations (version) VALUES (1)');
+            $this->pdo->commit();
+        } catch (Throwable $e) {
+            $this->pdo->rollBack();
+            throw $e;
+        }
     }
 
     private function ensureSeedData(): void {
@@ -173,7 +204,7 @@ class Database {
             [
                 'roll_no' => '23/CS/244',
                 'name' => 'Manish Singh',
-                'email' => 'manish.singh@lumina.edu',
+                'email' => 'manish.singh.23cs244@dtu.ac.in',
                 'department' => 'Computer Science & Engineering',
                 'semester' => 'Semester 5',
                 'maths' => 98.0,
@@ -185,7 +216,7 @@ class Database {
             [
                 'roll_no' => '23/CS/101',
                 'name' => 'Aarav Sharma',
-                'email' => 'aarav.sharma@lumina.edu',
+                'email' => 'aarav.sharma.23cs101@dtu.ac.in',
                 'department' => 'Computer Science & Engineering',
                 'semester' => 'Semester 5',
                 'maths' => 92.0,
@@ -197,7 +228,7 @@ class Database {
             [
                 'roll_no' => '23/CS/102',
                 'name' => 'Diya Patel',
-                'email' => 'diya.patel@lumina.edu',
+                'email' => 'diya.patel.23cs102@dtu.ac.in',
                 'department' => 'Information Technology',
                 'semester' => 'Semester 5',
                 'maths' => 85.0,
@@ -209,7 +240,7 @@ class Database {
             [
                 'roll_no' => '23/CS/105',
                 'name' => 'Rohan Gupta',
-                'email' => 'rohan.gupta@lumina.edu',
+                'email' => 'rohan.gupta.23cs105@dtu.ac.in',
                 'department' => 'Computer Science & Engineering',
                 'semester' => 'Semester 5',
                 'maths' => 78.0,
@@ -221,7 +252,7 @@ class Database {
             [
                 'roll_no' => '23/CS/112',
                 'name' => 'Ananya Iyer',
-                'email' => 'ananya.iyer@lumina.edu',
+                'email' => 'ananya.iyer.23cs112@dtu.ac.in',
                 'department' => 'Artificial Intelligence',
                 'semester' => 'Semester 5',
                 'maths' => 95.0,
@@ -233,7 +264,7 @@ class Database {
             [
                 'roll_no' => '23/CS/118',
                 'name' => 'Vikram Malhotra',
-                'email' => 'vikram.m@lumina.edu',
+                'email' => 'vikram.malhotra.23cs118@dtu.ac.in',
                 'department' => 'Computer Science & Engineering',
                 'semester' => 'Semester 5',
                 'maths' => 68.0,
@@ -245,7 +276,7 @@ class Database {
             [
                 'roll_no' => '23/CS/124',
                 'name' => 'Neha Kapoor',
-                'email' => 'neha.k@lumina.edu',
+                'email' => 'neha.kapoor.23cs124@dtu.ac.in',
                 'department' => 'Information Technology',
                 'semester' => 'Semester 5',
                 'maths' => 54.0,
@@ -257,7 +288,7 @@ class Database {
             [
                 'roll_no' => '23/CS/130',
                 'name' => 'Kabir Sen',
-                'email' => 'kabir.sen@lumina.edu',
+                'email' => 'kabir.sen.23cs130@dtu.ac.in',
                 'department' => 'Computer Science & Engineering',
                 'semester' => 'Semester 5',
                 'maths' => 38.0,
@@ -291,13 +322,13 @@ class Database {
         // Validate required fields
         $rollNo = trim($data['roll_no'] ?? '');
         $name   = trim($data['name'] ?? '');
-        $email  = trim($data['email'] ?? '');
         $dept   = trim($data['department'] ?? 'Computer Science & Engineering');
         $sem    = trim($data['semester'] ?? 'Semester 5');
 
-        if ($rollNo === '' || $name === '' || $email === '') {
-            throw new InvalidArgumentException("Roll Number, Full Name, and Email are mandatory fields.");
+        if ($rollNo === '' || $name === '') {
+            throw new InvalidArgumentException("Roll Number and Full Name are mandatory fields.");
         }
+        $email = generateInstitutionalEmail($name, $rollNo);
 
         // Check uniqueness of Roll Number
         $checkStmt = $this->pdo->prepare('SELECT id FROM students WHERE roll_no = :roll_no');
@@ -405,9 +436,9 @@ class Database {
 
         $rollNo = trim($data['roll_no'] ?? $existing['roll_no']);
         $name   = trim($data['name'] ?? $existing['name']);
-        $email  = trim($data['email'] ?? $existing['email']);
         $dept   = trim($data['department'] ?? $existing['department']);
         $sem    = trim($data['semester'] ?? $existing['semester']);
+        $email  = generateInstitutionalEmail($name, $rollNo);
 
         // Check if new roll_no conflicts with another student
         if ($rollNo !== $existing['roll_no']) {

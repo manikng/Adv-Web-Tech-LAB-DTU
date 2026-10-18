@@ -1,6 +1,6 @@
 <?php
 /**
- * Lumina Academy - Resilient Storage Driver
+ * Delhi Technological University - Resilient Storage Driver
  * Automatically leverages PDO SQLite if available, or seamlessly
  * falls back to a high-performance JSON store if SQLite extension is disabled.
  */

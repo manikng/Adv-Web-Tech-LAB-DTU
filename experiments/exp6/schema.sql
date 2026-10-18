@@ -48,11 +48,11 @@ CREATE TABLE `students` (
 INSERT INTO `students` 
   (`roll_no`, `name`, `email`, `department`, `semester`, `maths`, `physics`, `cs`, `web_tech`, `english`, `total_marks`, `percentage`, `gpa`, `grade`, `status`)
 VALUES
-  ('23/CS/244', 'Manish Singh', 'manish.singh@lumina.edu', 'Computer Science & Engineering', 'Semester 5', 98.00, 94.00, 99.00, 97.00, 92.00, 480.00, 96.00, 10.0, 'A+', 'Distinction'),
-  ('23/CS/101', 'Aarav Sharma', 'aarav.sharma@lumina.edu', 'Computer Science & Engineering', 'Semester 5', 92.00, 88.00, 94.00, 91.00, 89.00, 454.00, 90.80, 10.0, 'A+', 'Distinction'),
-  ('23/CS/102', 'Diya Patel', 'diya.patel@lumina.edu', 'Information Technology', 'Semester 5', 85.00, 89.00, 88.00, 92.00, 86.00, 440.00, 88.00, 9.0, 'A', 'First Class with Distinction'),
-  ('23/CS/105', 'Rohan Gupta', 'rohan.gupta@lumina.edu', 'Computer Science & Engineering', 'Semester 5', 78.00, 74.00, 82.00, 80.00, 76.00, 390.00, 78.00, 8.0, 'B+', 'First Class'),
-  ('23/CS/112', 'Ananya Iyer', 'ananya.iyer@lumina.edu', 'Artificial Intelligence', 'Semester 5', 95.00, 91.00, 96.00, 98.00, 90.00, 470.00, 94.00, 10.0, 'A+', 'Distinction'),
-  ('23/CS/118', 'Vikram Malhotra', 'vikram.m@lumina.edu', 'Computer Science & Engineering', 'Semester 5', 68.00, 62.00, 71.00, 65.00, 64.00, 330.00, 66.00, 7.0, 'B', 'Second Class'),
-  ('23/CS/124', 'Neha Kapoor', 'neha.k@lumina.edu', 'Information Technology', 'Semester 5', 54.00, 58.00, 52.00, 59.00, 55.00, 278.00, 55.60, 6.0, 'C', 'Pass Class'),
-  ('23/CS/130', 'Kabir Sen', 'kabir.sen@lumina.edu', 'Computer Science & Engineering', 'Semester 5', 38.00, 42.00, 35.00, 39.00, 40.00, 194.00, 38.80, 0.0, 'F', 'Remedial Required');
+  ('23/CS/244', 'Manish Singh', 'manish.singh.23cs244@dtu.ac.in', 'Computer Science & Engineering', 'Semester 5', 98.00, 94.00, 99.00, 97.00, 92.00, 480.00, 96.00, 10.0, 'A+', 'Distinction'),
+  ('23/CS/101', 'Aarav Sharma', 'aarav.sharma.23cs101@dtu.ac.in', 'Computer Science & Engineering', 'Semester 5', 92.00, 88.00, 94.00, 91.00, 89.00, 454.00, 90.80, 10.0, 'A+', 'Distinction'),
+  ('23/CS/102', 'Diya Patel', 'diya.patel.23cs102@dtu.ac.in', 'Information Technology', 'Semester 5', 85.00, 89.00, 88.00, 92.00, 86.00, 440.00, 88.00, 9.0, 'A', 'First Class with Distinction'),
+  ('23/CS/105', 'Rohan Gupta', 'rohan.gupta.23cs105@dtu.ac.in', 'Computer Science & Engineering', 'Semester 5', 78.00, 74.00, 82.00, 80.00, 76.00, 390.00, 78.00, 8.0, 'B+', 'First Class'),
+  ('23/CS/112', 'Ananya Iyer', 'ananya.iyer.23cs112@dtu.ac.in', 'Artificial Intelligence', 'Semester 5', 95.00, 91.00, 96.00, 98.00, 90.00, 470.00, 94.00, 10.0, 'A+', 'Distinction'),
+  ('23/CS/118', 'Vikram Malhotra', 'vikram.malhotra.23cs118@dtu.ac.in', 'Computer Science & Engineering', 'Semester 5', 68.00, 62.00, 71.00, 65.00, 64.00, 330.00, 66.00, 7.0, 'B', 'Second Class'),
+  ('23/CS/124', 'Neha Kapoor', 'neha.kapoor.23cs124@dtu.ac.in', 'Information Technology', 'Semester 5', 54.00, 58.00, 52.00, 59.00, 55.00, 278.00, 55.60, 6.0, 'C', 'Pass Class'),
+  ('23/CS/130', 'Kabir Sen', 'kabir.sen.23cs130@dtu.ac.in', 'Computer Science & Engineering', 'Semester 5', 38.00, 42.00, 35.00, 39.00, 40.00, 194.00, 38.80, 0.0, 'F', 'Remedial Required');

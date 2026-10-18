@@ -53,3 +53,11 @@ This document records past oversights, edge-cases, and corrections to ensure con
 - **What happened**: Passed `\$var` to PHP inline scripts inside PowerShell double quotes, causing syntax errors.
 - **Root cause**: In Windows PowerShell, the escape character is the backtick (`` ` ``), not backslash (`\`).
 - **Remedy**: Use `` `$var `` in PowerShell double-quoted strings, or write a dedicated standalone test script.
+
+---
+
+### Mistake 6: Unconfigured PDO Extensions in WinGet PHP Installation
+- **What happened**: Running `php index.php` or `php -r "..."` threw `PDOException: could not find driver` despite PHP 8.3 CLI binary being available in PATH.
+- **Root cause**: The fresh WinGet PHP distribution has `extension_dir = "ext"` as well as `extension=pdo_sqlite` and `extension=pdo_mysql` commented out by default in `php.ini`.
+- **Remedy**: Explicitly uncomment `extension_dir = "ext"`, `extension=pdo_sqlite`, `extension=pdo_mysql`, `extension=openssl`, and `extension=mbstring` in `php.ini` using a script, enabling zero-configuration execution via standard `php -S localhost:8000`.
+

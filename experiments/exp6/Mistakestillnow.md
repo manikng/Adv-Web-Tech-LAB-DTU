@@ -47,3 +47,19 @@ This document records past oversights, edge-cases, and corrections to ensure con
 - **What happened**: Passed `\$var` to PHP inline scripts inside PowerShell double quotes, causing syntax errors.
 - **Root cause**: In Windows PowerShell, the escape character is the backtick (`` ` ``), not backslash (`\`).
 - **Remedy**: Use `` `$var `` in PowerShell double-quoted strings, or write a dedicated standalone test script.
+
+---
+
+### Mistake 6: PHP SQLite driver not loading on Windows
+- **What happened**: Experiment 6 returned HTTP 500 with `PDOException: could not find driver` when PHP tried to open its SQLite database.
+- **Root cause**: The PHP installation had the `pdo_sqlite` DLL, but it was not enabled and PHP's configured extension directory pointed to `C:\php\ext` instead of the PHP installation's `ext` folder.
+- **Remedy**: Start the built-in server with the correct extension directory and SQLite PDO driver enabled:
+  ```powershell
+  $phpDir = Split-Path (Get-Command php).Source
+  php -d "extension_dir=$phpDir\ext" -d extension=pdo_sqlite -S localhost:8000 -t "D:\7-sem\advWebTechRepo\experiments\exp6"
+  ```
+  Verify the driver with `php -d "extension_dir=$phpDir\ext" -d extension=pdo_sqlite -m | findstr /i "pdo sqlite"`; it should list `PDO` and `pdo_sqlite`. Open `http://localhost:8000` after starting the server.
+
+### Mistake 7: DTU transcript and enrollment form
+- **Problem faced:** Transcript still showed an incorrect university affiliation; old student emails were not DTU-formatted, and the long enrollment form could not scroll to its lower fields.
+- **How fixed:** Use only “Delhi Technological University” on the transcript, generate/migrate emails as `firstname.lastname.rollno@dtu.ac.in`, and make the form a flex column with a scrollable body.

@@ -1,4 +1,10 @@
 <?php
+// PLACE THIS AT THE ABSOLUTE TOP OF THE FILE
+declare(strict_types=1);
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
 /**
  * Experiment 6: Database Connectivity and CRUD Operations
  * Main Application View & Server-Rendered Shell
@@ -7,7 +13,6 @@
  * Subject: Advanced Web Technologies
  */
 
-declare(strict_types=1);
 
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/db.php';
@@ -18,21 +23,20 @@ $stats = $db->getAnalytics();
 $initialStudents = $db->readAll('', '', '', 'id', 'DESC');
 ?>
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lumina Academic SIS • PHP & MySQL CRUD Engine | Experiment 06</title>
+  <title>Delhi Technological University Academic SIS • PHP & MySQL CRUD Engine | Experiment 06</title>
   <meta name="description" content="Experiment 06: Database Connectivity and CRUD Operations using PHP and MySQL. Designed by Manish Singh (23/CS/244) with full resilient storage, realtime grading analytics, and modern glassmorphic interface.">
   <link rel="stylesheet" href="assets/style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%200%22%20100%22%20100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  <!-- <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%200%22%20100%22%20100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>"> -->
 </head>
 <body>
   <div class="app-wrapper">
     <!-- Navbar -->
     <header class="navbar" id="main-navbar">
-      <a href="index.php" class="brand" id="brand-link" aria-label="Lumina SIS Home">
-        <div class="brand-icon">⚡</div>
+      <a href="index.php" class="brand" id="brand-link" aria-label="DTU SIS Home">
         <div class="brand-text">
           <h1><?= htmlspecialchars(APP_NAME) ?></h1>
           <span class="tagline">Exp 06 • PHP & MySQL Database Connectivity & CRUD</span>
@@ -212,9 +216,9 @@ $initialStudents = $db->readAll('', '', '', 'id', 'DESC');
                   <td><span class="grade-badge <?= $gradeClass ?>"><?= htmlspecialchars($s['grade']) ?></span></td>
                   <td>
                     <div class="action-buttons">
-                      <button class="action-btn" title="View Transcript" onclick="window.LuminaApp.openTranscript(<?= $s['id'] ?>)">📄</button>
-                      <button class="action-btn" title="Edit Student" onclick="window.LuminaApp.openEditModal(<?= $s['id'] ?>)">✏️</button>
-                      <button class="action-btn btn-delete" title="Delete Student" onclick="window.LuminaApp.openDeleteModal(<?= $s['id'] ?>)">🗑️</button>
+                      <button class="action-btn" title="View Transcript" onclick="window.DtuApp.openTranscript(<?= $s['id'] ?>)">📄</button>
+                      <button class="action-btn" title="Edit Student" onclick="window.DtuApp.openEditModal(<?= $s['id'] ?>)">✏️</button>
+                      <button class="action-btn btn-delete" title="Delete Student" onclick="window.DtuApp.openDeleteModal(<?= $s['id'] ?>)">🗑️</button>
                     </div>
                   </td>
                 </tr>
@@ -257,7 +261,7 @@ $initialStudents = $db->readAll('', '', '', 'id', 'DESC');
           <div class="form-row">
             <div class="form-group">
               <label for="email">Institutional Email *</label>
-              <input type="email" id="email" name="email" class="form-control" placeholder="e.g. p.varma@lumina.edu" required>
+              <input type="email" id="email" name="email" class="form-control" placeholder="Generated from name and roll number" readonly required>
             </div>
             <div class="form-group">
               <label for="department">Academic Department</label>

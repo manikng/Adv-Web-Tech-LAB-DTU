@@ -22,7 +22,7 @@ $db = Database::getInstance();
 if ($action === 'export_csv') {
     $students = $db->readAll('', '', '', 'roll_no', 'ASC');
     header('Content-Type: text/csv; charset=utf-8');
-    header('Content-Disposition: attachment; filename=lumina_students_exp6_' . date('Ymd_His') . '.csv');
+    header('Content-Disposition: attachment; filename=dtu_students_exp6_' . date('Ymd_His') . '.csv');
     
     $out = fopen('php://output', 'w');
     // Header row
@@ -55,7 +55,7 @@ if ($action === 'export_csv') {
 if ($action === 'export_json') {
     $students = $db->readAll('', '', '', 'roll_no', 'ASC');
     header('Content-Type: application/json; charset=utf-8');
-    header('Content-Disposition: attachment; filename=lumina_students_exp6_' . date('Ymd_His') . '.json');
+    header('Content-Disposition: attachment; filename=dtu_students_exp6_' . date('Ymd_His') . '.json');
     echo json_encode([
         'system' => APP_NAME,
         'experiment' => 'Experiment 6 - Database CRUD Operations (PHP & MySQL)',

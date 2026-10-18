@@ -1,6 +1,6 @@
 <?php
 /**
- * Lumina Academy - RESTful & Progressive API Gateway
+ * Delhi Technological University - RESTful & Progressive API Gateway
  * Designed with Norman error-resilience and Apple-grade responsiveness.
  */
 

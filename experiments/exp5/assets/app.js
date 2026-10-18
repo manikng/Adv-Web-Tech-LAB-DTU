@@ -1,5 +1,5 @@
 /**
- * DTU Lumina Academy - Client Application Logic
+ * DTU  - Client Application Logic
  * Don Norman Affordances, Signifiers & Instant Apple Feedback
  */
 

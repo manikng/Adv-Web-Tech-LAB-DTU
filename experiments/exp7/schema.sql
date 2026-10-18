@@ -65,6 +65,6 @@ CREATE TABLE `auth_logs` (
 INSERT INTO `users`
   (`username`, `email`, `password_hash`, `full_name`, `role`, `department`, `avatar_color`)
 VALUES
-  ('manish', 'manish.singh@lumina.edu', '$2y$10$6J3s9R54g2fBf5sQZfN4/uP1J3z1jA/C9o4wGqY0vR5s0xHqP6iOa', 'Manish Singh', 'admin', 'Computer Science & Engineering', '#6366f1'),
-  ('aarav', 'aarav.sharma@lumina.edu', '$2y$10$6J3s9R54g2fBf5sQZfN4/uP1J3z1jA/C9o4wGqY0vR5s0xHqP6iOa', 'Aarav Sharma', 'student', 'Computer Science & Engineering', '#10b981'),
-  ('sneha', 'prof.sneha@lumina.edu', '$2y$10$6J3s9R54g2fBf5sQZfN4/uP1J3z1jA/C9o4wGqY0vR5s0xHqP6iOa', 'Prof. Sneha Sen', 'faculty', 'Artificial Intelligence', '#ec4899');
+  ('manish', 'manish.singhdtu.ac.in', '$2y$10$6J3s9R54g2fBf5sQZfN4/uP1J3z1jA/C9o4wGqY0vR5s0xHqP6iOa', 'Manish Singh', 'admin', 'Computer Science & Engineering', '#6366f1'),
+  ('aarav', 'aarav.sharmadtu.ac.in', '$2y$10$6J3s9R54g2fBf5sQZfN4/uP1J3z1jA/C9o4wGqY0vR5s0xHqP6iOa', 'Aarav Sharma', 'student', 'Computer Science & Engineering', '#10b981'),
+  ('sneha', 'prof.snehadtu.ac.in', '$2y$10$6J3s9R54g2fBf5sQZfN4/uP1J3z1jA/C9o4wGqY0vR5s0xHqP6iOa', 'Prof. Sneha Sen', 'faculty', 'Artificial Intelligence', '#ec4899');

@@ -1,6 +1,6 @@
 <?php
 /**
- * Lumina Academy - Student Result Management System
+ * Delhi Technological University - Student Result Management System
  * Dynamic PHP Web Application with Apple Aesthetics & Don Norman Design Principles
  */
 
