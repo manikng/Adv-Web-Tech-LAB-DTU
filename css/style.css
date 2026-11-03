@@ -162,3 +162,41 @@ main {
     border: none;
     background: white;
 }
+
+.experiment-message {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px;
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    background: var(--card-bg);
+    text-align: left;
+}
+
+.experiment-message h2 {
+    margin-bottom: 16px;
+}
+
+.experiment-message p {
+    margin: 12px 0;
+    color: var(--text-secondary);
+}
+
+.experiment-message pre {
+    margin: 16px 0;
+    padding: 16px;
+    border-radius: 12px;
+    background: #1d1d1f;
+    color: white;
+    overflow-x: auto;
+}
+
+.experiment-message a {
+    color: var(--accent-color);
+}
+
+.message-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-weight: 600;
+}

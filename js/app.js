@@ -39,7 +39,22 @@ function loadExperiment(expNum) {
     if (!experiment) return;
 
     const file = experiment.file || "index.html";
-    appContent.innerHTML = `<iframe src="experiments/exp${expNum}/${file}" frameborder="0" id="exp-iframe"></iframe>`;
+    const isPhp = file.endsWith(".php");
+
+    if (isPhp) {
+        appContent.innerHTML = `
+            <section class="experiment-message">
+                <h2>${experiment.title}</h2>
+                <p>PHP cannot be executed by GitHub Pages.</p>
+                <p>Run this experiment locally from the repository root:</p>
+                <pre><code>php -S localhost:8000</code></pre>
+                <p>Then open <a href="http://localhost:8000/experiments/exp${expNum}/${file}" target="_blank">http://localhost:8000/experiments/exp${expNum}/${file}</a>.</p>
+                <a class="message-link" href="https://github.com/manikng/Adv-Web-Tech-LAB-DTU/tree/main/experiments/exp${expNum}" target="_blank" rel="noopener noreferrer">View PHP source on GitHub</a>
+            </section>`;
+    } else {
+        appContent.innerHTML = `<iframe src="experiments/exp${expNum}/${file}" frameborder="0" id="exp-iframe"></iframe>`;
+    }
+
     homeBtn.classList.remove('active');
 }
 
