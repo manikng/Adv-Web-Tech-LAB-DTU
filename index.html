@@ -9,15 +9,52 @@
 <body>
 
     <header>
-        <div class="logo">AWT Lab</div>
-        <nav>
-            <!-- Yeh button home pe wapas laane ke liye hai -->
-            <button id="home-btn" class="nav-link active">All Experiments</button>
+        <a class="logo" href="./" aria-label="AWT Lab home">
+            <span class="logo-mark">AWT</span>
+            <span>Laboratory</span>
+        </a>
+        <nav aria-label="Primary navigation">
+            <span class="author-label">
+                <strong>Manish Singh</strong>
+                <span>23/CS/244</span>
+            </span>
+            <button id="home-btn" class="nav-link active" type="button">All Experiments</button>
         </nav>
     </header>
 
-    <!-- Sirf ek empty div, isme JS apne aap cards daal dega -->
     <main id="app-content"></main>
+
+    <footer class="site-footer" id="contact">
+        <div class="footer-intro">
+            <p class="footer-eyebrow">Get in touch</p>
+            <h2>Let’s connect.</h2>
+            <p>Have feedback about a project or want to discuss web technologies?</p>
+        </div>
+
+        <form class="contact-form" id="contact-form">
+            <div class="form-row">
+                <label for="contact-name">Name</label>
+                <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+            </div>
+            <div class="form-row">
+                <label for="contact-email">Email</label>
+                <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            </div>
+            <div class="form-row form-row-full">
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="message" rows="4" placeholder="Write your message" required></textarea>
+            </div>
+            <div class="form-actions">
+                <button class="submit-button" type="submit">Send Message</button>
+                <p class="form-status" id="form-status" role="status"></p>
+            </div>
+        </form>
+
+        <div class="footer-bottom">
+            <p>© 2026 Manish Singh</p>
+            <a href="mailto:manisskng@gmail.com">manisskng@gmail.com</a>
+        </div>
+    </footer>
 
     <script src="js/app.js"></script>
 </body>

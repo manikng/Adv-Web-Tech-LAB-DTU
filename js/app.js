@@ -15,7 +15,13 @@ const homeBtn = document.getElementById('home-btn');
 
 // --- FUNCTION TO BUILD CARDS ---
 function renderGrid() {
-    let cardsHTML = '<div class="grid-container">';
+    let cardsHTML = `
+        <section class="showcase-heading">
+            <p class="eyebrow">Advanced Web Technologies · 2025–2026</p>
+            <h1>Experiments by Manish Singh</h1>
+            <p>Roll No. 23/CS/244 · A collection of concepts explored, built, and documented throughout the AWT laboratory course.</p>
+        </section>
+        <div class="grid-container">`;
     
     experiments.forEach(exp => {
         cardsHTML += `
@@ -62,6 +68,24 @@ function loadExperiment(expNum) {
 homeBtn.addEventListener('click', () => {
     renderGrid(); // Grid wapas bana do
     homeBtn.classList.add('active');
+});
+
+// --- CONTACT FORM ---
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+
+contactForm.addEventListener('submit', event => {
+    event.preventDefault();
+
+    const formData = new FormData(contactForm);
+    const name = formData.get('name').trim();
+    const email = formData.get('email').trim();
+    const message = formData.get('message').trim();
+    const subject = encodeURIComponent(`AWT Lab Contact — ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+
+    formStatus.textContent = 'Opening your email application…';
+    window.location.href = `mailto:manisskng@gmail.com?subject=${subject}&body=${body}`;
 });
 
 // --- INITIAL LOAD ---
