@@ -1,10 +1,13 @@
 // --- EXPERIMENT DATA ---
 // Yahan par sirf naya experiment add karna hai, card khud ban jayega!
 const experiments = [
-    { id: 1, title: "Experiment 1", desc: "List Departmental Details" },
-    { id: 2, title: "Experiment 2", desc: "CSS Flexbox & Grid Layouts" },
-    { id: 3, title: "Experiment 3", desc: "Fetch API & JSON Data" }
-    // Jab exp4 karega, bas yahan likh dena: { id: 4, title: "Experiment 4", desc: "Topic name" },
+    { id: 1, title: "Experiment 1", desc: "List Departmental Details", file: "index.html" },
+    { id: 2, title: "Experiment 2", desc: "CSS Flexbox & Grid Layouts", file: "index.html" },
+    { id: 3, title: "Experiment 3", desc: "JavaScript and Interactive Web Pages", file: "index.html" },
+    { id: 4, title: "Experiment 4", desc: "XML & XSL Course Catalogue", file: "courses.xml" },
+    { id: 5, title: "Experiment 5", desc: "Dynamic PHP Student Result Management", file: "index.php" },
+    { id: 6, title: "Experiment 6", desc: "PHP & MySQL CRUD Operations", file: "index.php" },
+    { id: 7, title: "Experiment 7", desc: "Authentication with Sessions & Cookies", file: "index.php" }
 ];
 
 const appContent = document.getElementById('app-content');
@@ -29,11 +32,14 @@ function renderGrid() {
 }
 
 // --- FUNCTION TO LOAD EXPERIMENT IN IFRAME ---
-//here folder structure is like experiments/exp1/index.html, experiments/exp2/index.html, etc.
-// just add a new folder with name 'experiments/expi' and put a index.html file and it will automatically be added to the grid
+// Each experiment can use index.html, courses.xml, index.php, or any other entry file.
+// Add the entry file in the experiment object's "file" property.
 function loadExperiment(expNum) {
-    // Yahan dekh, ye dynamically experiments/exp1/index.html ko fetch karega
-    appContent.innerHTML = `<iframe src="experiments/exp${expNum}/index.html" frameborder="0" id="exp-iframe"></iframe>`;
+    const experiment = experiments.find(exp => exp.id === expNum);
+    if (!experiment) return;
+
+    const file = experiment.file || "index.html";
+    appContent.innerHTML = `<iframe src="experiments/exp${expNum}/${file}" frameborder="0" id="exp-iframe"></iframe>`;
     homeBtn.classList.remove('active');
 }
 
